@@ -1,12 +1,12 @@
-pkgname=add
-pkgver=1.1
+pkgname=python-elephant
+pkgver=1
 pkgrel=1
 pkgdesc="Adds to integers, takes two arguments as input."
 arch=("any")
-makedepends=('python')
+makedepends=('python' 'python-apple')
 url="https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module"
-_dir="add"
-source=("${_dir}"::"git+https://github.com/majorx234/python-add.git")
+_dir="python-elephant"
+source=("${_dir}"::"git+https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module")
 md5sums=('SKIP')
 
 build() {

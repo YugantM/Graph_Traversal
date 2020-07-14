@@ -5,7 +5,7 @@ pkgdesc="Node A"
 arch=("any")
 makedepends=('python')
 url="https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module"
-_dir="add"
+_dir="python-apple"
 source=("${_dir}"::"git+https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module")
 md5sums=('SKIP')
 
