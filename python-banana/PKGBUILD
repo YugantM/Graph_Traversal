@@ -3,7 +3,12 @@ pkgver=1
 pkgrel=1
 pkgdesc="node B"
 arch=("any")
-makedepends=('python' 'python-apple')
+makedepends=(python
+
+python-apple)
+
+depends=(python-apple)
+
 url="https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module"
 _dir="python-banana"
 source=("${_dir}"::"git+https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module")
