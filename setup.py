@@ -8,9 +8,9 @@ setup(
   url = 'https://github.com/YugantM/Graph_Traversal',   
   download_url = 'https://github.com/YugantM/Graph_Traversal.git',
   entry_points = {
-              'console_scripts': ['add = add.__main__:main',],
+              'console_scripts': ['ggraph = ggraph.__main__:main',],
               },
-  scripts=['scripts/add'],  
+  scripts=['scripts/ggraph'],  
   keywords = ['addition', 'calculation'],  
   
   classifiers=[
