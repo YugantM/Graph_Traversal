@@ -118,7 +118,7 @@ def main():
         print("\n".join(toposort_flatten(ggraph())))
 
     elif len(sys.argv) == 2:
-        lis = toposort_flatten(ggraph()
+        lis = toposort_flatten(ggraph())
         if sys.argv[1] in lis:
             print("\n".join(lis[:lis.index(sys.argv[1])]))
             #return (int(sys.argv[1])+int(sys.argv[2]))  
