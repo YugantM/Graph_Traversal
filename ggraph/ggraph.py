@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import sys
+import sys,getopt
 import os
 import pandas as pd
 import networkx as nx
@@ -23,8 +23,59 @@ def variable_or_not(line):
     else:
         return False
 
+def get_depends(pack):
+    return main_frame.index[main_frame[pack] == 1].tolist()
+
+def flat(lis):
+    
+    temp = []
+    
+    for each in lis:
+        
+        if type(each) == str:
+            temp.append(each)
+        else: 
+            for x in each:
+                temp.append(x)
+        
+    return temp
+
+
+def custom_list(pack):
+    label = "lavel-"
+    levels = {}
+
+    current_level = 0
+    levels[label+str(current_level)] = [pack]
+        
+    level_list = get_depends(pack)
+
+    while len(level_list) !=0 :
+        
+        #print(current_level,"|",level_list,"|",levels)
+        #print(levels)
+        temp = []
+        for each in level_list:
+
+            if each not in flat(list(levels.values())):
+
+                temp.append(each)
+
+        #current_level +=1
+        
+        #print(current_level,temp)
+        levels[label+str(current_level)] = temp
+
+        level_list = flat([get_depends(x) for x in temp])
+        current_level +=1
+            
+        
+    return levels
+
 
 def ggraph():
+
+    global main_frame
     # start reading the dependencies
     # flag is set to True if the desired variable is there in the line
     flag = False
@@ -121,9 +172,21 @@ def main():
         lis = toposort_flatten(ggraph())
         if sys.argv[1] in lis:
             print("\n".join(lis[:lis.index(sys.argv[1])]))
-            #return (int(sys.argv[1])+int(sys.argv[2]))  
+            #return (int(sys.argv[1])+int(sys.argv[2]))
     else:
         print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
+
+
+    for opt, arg in opts:
+      if opt == '-h':
+         print("ggraph -p <PACKAGE_NAME>")
+         sys.exit()
+      elif opt in ("-p", "--package"):
+         
+
+
+      elif opt in ("-o", "--ofile"):
+         outputfile = arg
 
 
 if __name__ == "__main__":
