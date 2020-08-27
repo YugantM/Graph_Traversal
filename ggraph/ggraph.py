@@ -191,6 +191,7 @@ def main():
     else:
         print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
+    opts, args = getopt.getopt(argv,"hp:",["PACKAGE_NAME="])
 
     for opt, arg in opts:
         if opt == '-h':
