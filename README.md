@@ -38,7 +38,7 @@ It also helps to check the cyclic dependecies.
 
 for more understanding see below image 
 
-![graph](./untitled (4).png)
+![graph](./graph2.png)
 
 The given tree/graph starts from the root node. If package A is passed as an argument the function will return the dictionary with levels and name of the nodes accordingly.
 
