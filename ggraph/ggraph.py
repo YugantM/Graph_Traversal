@@ -179,7 +179,7 @@ def ggraph():
 #for each in range(len(main_frame.index)):
 #    print("Module:{0}, Count {1}".format(list(main_frame.index)[each],list(main_frame.iloc[each]).count(1)))
 
-def main():
+def main(argv):
     if len(sys.argv) == 1:
         print("\n".join(toposort_flatten(ggraph())))
 
