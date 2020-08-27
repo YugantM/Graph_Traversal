@@ -24,6 +24,8 @@ def variable_or_not(line):
         return False
 
 def get_depends(pack):
+    global main_frame
+
     return main_frame.index[main_frame[pack] == 1].tolist()
 
 def flat(lis):
@@ -47,6 +49,13 @@ def custom_list(pack):
 
     current_level = 0
     levels[label+str(current_level)] = [pack]
+    
+    bases = []
+    
+    for each in list(main_frame.columns):
+        
+        if len(get_depends(each)) == 0:
+            bases.append(each)
         
     level_list = get_depends(pack)
 
@@ -58,19 +67,25 @@ def custom_list(pack):
         for each in level_list:
 
             if each not in flat(list(levels.values())):
-
-                temp.append(each)
-
+                
+                if each not in bases:
+                    temp.append(each)
+                
         #current_level +=1
         
         #print(current_level,temp)
-        levels[label+str(current_level)] = temp
+        if len(temp)>0:
+            levels[label+str(current_level)] = temp
 
-        level_list = flat([get_depends(x) for x in temp])
-        current_level +=1
+            level_list = flat([get_depends(x) for x in temp])
+            current_level +=1
+        else:
+            level_list = []
             
-        
-    return levels
+           
+    levels['base'] = bases
+    
+    return flat(list(levels.values()))
 
 
 def ggraph():
@@ -178,15 +193,17 @@ def main():
 
 
     for opt, arg in opts:
-      if opt == '-h':
-         print("ggraph -p <PACKAGE_NAME>")
-         sys.exit()
-      elif opt in ("-p", "--package"):
+        if opt == '-h':
+            print("ggraph -p <PACKAGE_NAME>")
+            sys.exit()
+
+        elif opt in ("-p", "--package"):
          
+            print(custom_list(arg))
 
+        else:
 
-      elif opt in ("-o", "--ofile"):
-         outputfile = arg
+            print('No such options available')
 
 
 if __name__ == "__main__":
