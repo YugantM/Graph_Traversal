@@ -1,5 +1,6 @@
 #! /usr/bin/python
 
 from ggraph import ggraph
+import sys
 
-ggraph.main()
+ggraph.main(sys.argv[1:])
