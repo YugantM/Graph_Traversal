@@ -44,6 +44,11 @@ def flat(lis):
 
 
 def custom_list(pack):
+    global main_frame
+
+    ggraph()
+
+    main_frame = main_frame.T
     label = "lavel-"
     levels = {}
 
@@ -181,15 +186,16 @@ def ggraph():
 
 def main(argv):
     if len(sys.argv) == 1:
-        print("\n".join(toposort_flatten(ggraph())))
+        print(toposort_flatten(ggraph())[::-1])
+        return list(toposort_flatten(ggraph()))
 
     elif len(sys.argv) == 2:
         lis = toposort_flatten(ggraph())
         if sys.argv[1] in lis:
             print("\n".join(lis[:lis.index(sys.argv[1])]))
             #return (int(sys.argv[1])+int(sys.argv[2]))
-    else:
-        print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
+    #else:
+    #    print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
     opts, args = getopt.getopt(argv,"hp:",["PACKAGE_NAME="])
 
@@ -201,6 +207,7 @@ def main(argv):
         elif opt in ("-p", "--package"):
          
             print(custom_list(arg))
+            return custom_list(arg)
 
         else:
 
