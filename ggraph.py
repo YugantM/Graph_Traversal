@@ -48,7 +48,7 @@ def int_list(pack):
 
     ggraph()
 
-    main_frame = main_frame.T
+    #main_frame = main_frame.T
     label = "lavel-"
     levels = {}
 
@@ -57,10 +57,10 @@ def int_list(pack):
     
     bases = []
     
-    for each in list(main_frame.columns):
+    #for each in list(main_frame.columns):
         
-        if len(get_depends(each)) == 0:
-            bases.append(each)
+        #if len(get_depends(each)) == 0:
+            #bases.append(each)
         
     level_list = get_depends(pack)
 
@@ -194,11 +194,11 @@ def custom_list(package):
 
     for each in list(main_depends.keys()):
 
-        if package in int_list(each):
+         if package in int_list(each):
             if each != package:
                 lis.append(each)
 
-    return lis
+    return int_list(package)
 
 
 # number of dependecies count
