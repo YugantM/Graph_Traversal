@@ -48,7 +48,6 @@ def custom_list(pack):
 
     ggraph()
 
-    main_frame = main_frame.T
     label = "lavel-"
     levels = {}
 
@@ -57,14 +56,18 @@ def custom_list(pack):
     
     bases = []
     
-    '''for each in list(main_frame.columns):
-                    
-                    if len(get_depends(each)) == 0:
-                        bases.append(each)'''
+    #for each in list(main_frame.columns):
+        
+        #if len(get_depends(each)) == 0:
+            #bases.append(each)
         
     level_list = get_depends(pack)
+    
+    if len(level_list) == 0:
+        return {}
 
     while len(level_list) !=0 :
+        
         
         #print(current_level,"|",level_list,"|",levels)
         #print(levels)
@@ -82,8 +85,11 @@ def custom_list(pack):
         if len(temp)>0:
             levels[label+str(current_level)] = temp
 
-            level_list = flat([get_depends(x) for x in temp])
-            current_level +=1
+            
+            level_list = flat([get_depends(x) for x in temp if len(get_depends(x)) >= 1])
+            
+            if len(level_list):
+                current_level +=1
         else:
             level_list = []
             
