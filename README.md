@@ -54,6 +54,40 @@ ggraph returns the sorted list of the packages. ggraph iterates through all the 
 
 
 
+### Usage:
+
+Go to root directory where all the fodlers are placed with PKGBUILDs:
+
+```sh
+ggraph
+```
+
+For a specific package:
+
+```sh
+ggraph -p <Package_Name>
+```
+
+
+
+Observer the following graph containing some packages and directed graph which shows the their dependencies.
+
+<img src="./graph.png">
+
+
+
+For package python-apple following output will be printed:
+
+<img src="./Screenshot 2020-09-01 at 3.36.14 PM.png">
+
+
+
+Below image is the tree which repsents the dependencies for module **python-apple**:
+
+<img src="./tree.jpg">
+
+The above tree is being sorted to get an ordered list, which can be followed to update the packages in the system.
+
 #### *Notes:*
 
 The parser can be modified to extract different types of variables from the PKGBUILDs.
