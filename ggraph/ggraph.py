@@ -43,7 +43,7 @@ def flat(lis):
     return temp
 
 
-def int_list(pack):
+def custom_list(pack):
     global main_frame
 
     ggraph()
@@ -57,10 +57,10 @@ def int_list(pack):
     
     bases = []
     
-    for each in list(main_frame.columns):
-        
-        if len(get_depends(each)) == 0:
-            bases.append(each)
+    '''for each in list(main_frame.columns):
+                    
+                    if len(get_depends(each)) == 0:
+                        bases.append(each)'''
         
     level_list = get_depends(pack)
 
@@ -185,20 +185,6 @@ def ggraph():
      
     return main_depends       
 
-def custom_list(package):
-    global main_frame,main_depends
-
-    ggraph()
-
-    lis = []
-
-    for each in list(main_depends.keys()):
-
-        if package in int_list(each):
-            if each != package:
-                lis.append(each)
-
-    return lis
 
 
 # number of dependecies count
