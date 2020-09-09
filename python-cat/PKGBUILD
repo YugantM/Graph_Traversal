@@ -1,0 +1,26 @@
+pkgname=python-cat
+pkgver=1
+pkgrel=1
+pkgdesc="node B"
+arch=("any")
+makedepends=(python
+
+python-apple)
+
+depends=(python-apple python python-setuptools)
+
+url="https://github.com/YugantM/PKGBUILD_Tutorial/python_cat_module"
+_dir="python-banana"
+source=("${_dir}"::"git+https://github.com/YugantM/PKGBUILD_Tutorial/python_cat_module")
+md5sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${_dir}" 
+  python setup.py build
+
+}
+
+package() {
+  cd "${_dir}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
