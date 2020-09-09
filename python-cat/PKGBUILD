@@ -1,0 +1,21 @@
+pkgname=python-cat
+pkgver=1
+pkgrel=1
+pkgdesc="New module."
+arch=("any")
+makedepends=('python-apple' 'python-elephant' 'python')
+url="https://github.com/YugantM/PKGBUILD_Tutorial/python_cat_module"
+_dir="python-dog"
+source=("${_dir}"::"git+https://github.com/YugantM/PKGBUILD_Tutorial/new_module")
+md5sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${_dir}" 
+  python setup.py build
+
+}
+
+package() {
+  cd "${_dir}"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
