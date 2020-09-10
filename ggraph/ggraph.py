@@ -222,7 +222,7 @@ def main(argv):
             print("ggraph -p <PACKAGE_NAME>")
             sys.exit()
 
-        elif opn in ("-f","--frame"):
+        elif opt in ("-f","--frame"):
             ggraph()
             print(main_frame)
             return main_frame
