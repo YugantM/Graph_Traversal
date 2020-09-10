@@ -215,15 +215,16 @@ def main(argv):
     #else:
     #    print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
-    opts, args = getopt.getopt(argv,"hps:",["PACKAGE_NAME="])
+    opts, args = getopt.getopt(argv,"hfp:",["PACKAGE_NAME="])
 
     for opt, arg in opts:
         if opt == '-h':
             print("ggraph -p <PACKAGE_NAME>")
             sys.exit()
 
-        elif opn in ("-s"):
+        elif opn in ("-f","--frame"):
             ggraph()
+            print(main_frame)
             return main_frame
         elif opt in ("-p", "--package"):
          
