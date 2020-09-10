@@ -51,7 +51,7 @@ def custom_list(pack):
     #os.chdir("..")
     #os.system("ls")
     #print(main_frame)
-    main_frame = main_frame.T
+    #main_frame = main_frame.T
     label = "lavel-"
     levels = {}
 
