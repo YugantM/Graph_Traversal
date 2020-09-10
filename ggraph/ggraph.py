@@ -202,6 +202,7 @@ def ggraph():
 #    print("Module:{0}, Count {1}".format(list(main_frame.index)[each],list(main_frame.iloc[each]).count(1)))
 
 def main(argv):
+    global main_frame
     if len(sys.argv) == 1:
         print(toposort_flatten(ggraph())[::-1])
         return list(toposort_flatten(ggraph()))
@@ -214,13 +215,16 @@ def main(argv):
     #else:
     #    print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
-    opts, args = getopt.getopt(argv,"hp:",["PACKAGE_NAME="])
+    opts, args = getopt.getopt(argv,"hps:",["PACKAGE_NAME="])
 
     for opt, arg in opts:
         if opt == '-h':
             print("ggraph -p <PACKAGE_NAME>")
             sys.exit()
 
+        elif opn in ("-s"):
+            ggraph()
+            return main_frame
         elif opt in ("-p", "--package"):
          
             print(custom_list(arg))
