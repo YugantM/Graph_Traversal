@@ -25,7 +25,8 @@ def variable_or_not(line):
 
 def get_depends(pack):
     global main_frame
-
+    #ggraph()
+    #print(main_frame)
     return main_frame.index[main_frame[pack] == 1].tolist()
 
 def flat(lis):
@@ -47,7 +48,10 @@ def custom_list(pack):
     global main_frame
 
     ggraph()
-
+    #os.chdir("..")
+    os.system("ls")
+    print(main_frame)
+    main_frame = main_frame.T
     label = "lavel-"
     levels = {}
 
