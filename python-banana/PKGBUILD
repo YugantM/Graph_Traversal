@@ -7,7 +7,7 @@ makedepends=(python
 
 python-apple)
 
-depends=(python-apple)
+depends=(python-apple python-cat)
 
 url="https://github.com/YugantM/PKGBUILD_Tutorial/python_add_module"
 _dir="python-banana"
