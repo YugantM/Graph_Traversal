@@ -224,7 +224,7 @@ def main(argv):
 
         elif opt in ("-f","--frame"):
             ggraph()
-            print(main_frame)
+            #print(main_frame)
             main_frame.to_csv("main.csv")
             return main_frame
         elif opt in ("-p", "--package"):
