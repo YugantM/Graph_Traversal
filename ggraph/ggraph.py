@@ -50,7 +50,7 @@ def custom_list(pack):
     ggraph()
     #os.chdir("..")
     os.system("ls")
-    print(main_frame)
+    #print(main_frame)
     main_frame = main_frame.T
     label = "lavel-"
     levels = {}
