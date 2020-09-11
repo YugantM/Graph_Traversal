@@ -7,7 +7,7 @@ from toposort import toposort, toposort_flatten
 from collections import defaultdict 
 
 # current directory
-path = "../"
+path = "./"
 
 # list of folders of the given path is assigned to the variable folder_list
 folder_list = [each for each in list(os.walk(path))[0][1] if "python" in each]
