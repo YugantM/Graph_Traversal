@@ -7,7 +7,7 @@ from toposort import toposort, toposort_flatten
 from collections import defaultdict 
 
 # current directory
-path = "./"
+path = "../"
 
 # list of folders of the given path is assigned to the variable folder_list
 folder_list = [each for each in list(os.walk(path))[0][1] if "python" in each]
@@ -208,7 +208,7 @@ def ggraph(f=False):
         #subframe(main_frame,temp)
 
         #print(sub_depends)
-        return ",".join(list(toposort_flatten(sub_depends)))
+        return ",".join(list(toposort_flatten(sub_depends))[::-1])
 
     #os.system("ls")
     return main_depends       
@@ -225,11 +225,12 @@ def main(argv):
     
     if len(sys.argv) == 1:
 
+        main_frame.to_csv("./main.csv")
         print(toposort_flatten(ggraph())[::-1])
         return list(toposort_flatten(ggraph()))
 
     elif len(sys.argv) == 2:
-        print("hi")
+        #print("hi")
         lis = toposort_flatten(ggraph())
         if sys.argv[1] in lis:
             print("\n".join(lis[:lis.index(sys.argv[1])]))
