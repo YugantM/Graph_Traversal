@@ -68,7 +68,7 @@ def custom_list(pack):
     level_list = get_depends(pack)
     
     if len(level_list) == 0:
-        return {}
+        return []
 
     while len(level_list) !=0 :
         
@@ -104,13 +104,14 @@ def custom_list(pack):
 
 
 
+def subframe(frame,lis):
+    return frame[lis].T[lis].T
 
 
 
+def ggraph(f=False):
 
-def ggraph():
-
-    global main_frame,main_depends
+    global main_frame,main_depends,args
     # start reading the dependencies
     # flag is set to True if the desired variable is there in the line
     flag = False
@@ -192,7 +193,24 @@ def ggraph():
                     
                     # set the cell value to 1 if there is dependencies between two modules
                     main_frame.loc[ind,each] = 1
-     
+
+    if f==True:
+
+        sub_depends = {}
+        temp = []
+
+        #print(main_depends)
+        for each in args:
+            temp= temp + [each] + custom_list(each)
+
+        for each in temp:
+            sub_depends[each] = set(custom_list(each))
+        #subframe(main_frame,temp)
+
+        #print(sub_depends)
+        return ",".join(list(toposort_flatten(sub_depends)))
+
+    #os.system("ls")
     return main_depends       
 
 
@@ -202,35 +220,44 @@ def ggraph():
 #    print("Module:{0}, Count {1}".format(list(main_frame.index)[each],list(main_frame.iloc[each]).count(1)))
 
 def main(argv):
-    global main_frame
+    global main_frame,args
+
+    
     if len(sys.argv) == 1:
+
         print(toposort_flatten(ggraph())[::-1])
         return list(toposort_flatten(ggraph()))
 
     elif len(sys.argv) == 2:
+        print("hi")
         lis = toposort_flatten(ggraph())
         if sys.argv[1] in lis:
             print("\n".join(lis[:lis.index(sys.argv[1])]))
-            #return (int(sys.argv[1])+int(sys.argv[2]))
+            return (int(sys.argv[1])+int(sys.argv[2]))
     #else:
-    #    print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
+        #print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
-    opts, args = getopt.getopt(argv,"hfp:",["PACKAGE_NAME="])
+    opts, args = getopt.getopt(argv,"hs:p:",["help","slicing","package"])
 
     for opt, arg in opts:
         if opt == '-h':
             print("ggraph -p <PACKAGE_NAME>")
             sys.exit()
 
-        elif opt in ("-f","--frame"):
-            ggraph()
-            #print(main_frame)
-            main_frame.to_csv("main.csv")
-            return main_frame
+        elif opt in ("-s","--slice"):
+
+            args = arg.split(",")
+            # removing whitespace from the module names 
+            args = [each.strip("") for each in args]
+            result = ggraph(True)
+            print(result)
+            return result
+
         elif opt in ("-p", "--package"):
-         
-            print(custom_list(arg))
-            return custom_list(arg)
+            
+            #os.system("ls")
+            print(",".join(custom_list(arg)))
+            return ",".join(custom_list(arg))
 
         else:
 
