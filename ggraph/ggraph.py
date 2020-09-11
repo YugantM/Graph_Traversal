@@ -225,6 +225,7 @@ def main(argv):
     
     if len(sys.argv) == 1:
 
+        ggraph()
         main_frame.to_csv("./main.csv")
         print(toposort_flatten(ggraph())[::-1])
         return list(toposort_flatten(ggraph()))
