@@ -60,6 +60,9 @@ Go to root directory where all the fodlers are placed with PKGBUILDs:
 
 ```sh
 ggraph
+# options:
+# -p | --package
+# -s | --subgraph
 ```
 
 For a specific package:
@@ -88,13 +91,24 @@ Below image is the tree which repsents the dependencies for module **python-appl
 
 The above tree is being sorted to get an ordered list, which can be followed to update the packages in the system.
 
+For list of packages:
+
+```sh
+ggraph -s <Package_Name1>,<Package_Name2>,<Package_Name..>
+# the package names should be separated by ","
+```
+
+For package python-apple and python-cat, following output will be generated:
+
+<img src="./Screenshot 2020-09-14 at 4.06.58 PM.png" >
+
+The sub-graph which is being sorted can be seen below:
+
+<img src="./tree2.png">
+
 #### *Notes:*
 
 The parser can be modified to extract different types of variables from the PKGBUILDs.
 
-Future work: identifying the changes in packages.
 
-
-
-The new line.
 
