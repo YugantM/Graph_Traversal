@@ -260,8 +260,9 @@ def main(argv):
         elif opt in ("-p", "--package"):
             
             #os.system("ls")
-            print(",".join(custom_list(arg)))
+            #print(",".join(custom_list(arg)))
             the_dict['packages'] = ",".join(custom_list(arg))
+            print(the_dict)
             return json.dumps(the_dict)
 
         else:
