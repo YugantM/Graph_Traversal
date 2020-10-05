@@ -4,7 +4,8 @@ import os
 import pandas as pd
 import networkx as nx
 from toposort import toposort, toposort_flatten
-from collections import defaultdict 
+from collections import defaultdict
+import json
 
 # current directory
 path = "./"
@@ -222,6 +223,7 @@ def ggraph(f=False):
 def main(argv):
     global main_frame,args
 
+    the_dict = {}
     
     if len(sys.argv) == 1:
 
@@ -259,7 +261,8 @@ def main(argv):
             
             #os.system("ls")
             print(",".join(custom_list(arg)))
-            return ",".join(custom_list(arg))
+            the_dict['packages'] = ",".join(custom_list(arg))
+            return json.dumps(the_dict)
 
         else:
 
