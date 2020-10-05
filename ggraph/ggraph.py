@@ -262,7 +262,7 @@ def main(argv):
             #os.system("ls")
             #print(",".join(custom_list(arg)))
             the_dict['packages'] = ",".join(custom_list(arg))
-            sys.stdout.write(the_dict)
+            sys.stdout.write(json.dump(the_dict))
             print(the_dict)
             return json.dumps(the_dict)
 
