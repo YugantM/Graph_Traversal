@@ -116,16 +116,33 @@ The parser can be modified to extract different types of variables from the PKGB
 
 **Modes of output:**
 
+1. examples with --package [-p] option:
+
 ```sh
 ggraph -p python-apple -n
 ```
 
 <img src="./Screenshot 2020-10-06 at 4.13.35 PM.png">
 
-
-
 ```sh
 ggraph -p python-apple -j
 ```
 
 <img src="./Screenshot 2020-10-06 at 4.15.38 PM.png">
+
+
+
+2. examples with --subgraph [-s] option:
+
+```sh
+ggraph -s python-cat,python-dog -n
+```
+
+<img src="./Screenshot 2020-10-06 at 4.21.54 PM.png">
+
+```sh
+ggraph -s python-cat,python-dog -j
+```
+
+<img src="./Screenshot 2020-10-06 at 4.22.56 PM.png">
+
