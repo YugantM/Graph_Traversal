@@ -241,7 +241,7 @@ def main(argv):
     #else:
         #print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
-    opts, args = getopt.getopt(argv,"hs:p:j:n:",["help","slicing","package","json","normal"])
+    opts, args = getopt.getopt(argv,"hs:p:jn",["help","slicing","package","json","normal"])
 
     for opt, arg in opts:
 
