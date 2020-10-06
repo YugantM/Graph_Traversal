@@ -263,7 +263,7 @@ def main(argv):
             #print(",".join(custom_list(arg)))
             the_dict['packages'] = ",".join(custom_list(arg))
             #sys.stdout.write(json.dumps(the_dict))
-            print(the_dict['packages'])
+            print(the_dict)
             return json.dumps(the_dict)
 
         else:
