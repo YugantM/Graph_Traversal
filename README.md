@@ -63,6 +63,8 @@ ggraph
 # options:
 # -p | --package
 # -s | --subgraph
+# -j : prints and returns json 
+# -n : prints and returns string
 ```
 
 For a specific package:
@@ -112,3 +114,18 @@ The parser can be modified to extract different types of variables from the PKGB
 
 
 
+**Modes of output:**
+
+```sh
+ggraph -p python-apple -n
+```
+
+<img src="./Screenshot 2020-10-06 at 4.13.35 PM.png">
+
+
+
+```sh
+ggraph -p python-apple -j
+```
+
+<img src="./Screenshot 2020-10-06 at 4.15.38 PM.png">
