@@ -241,9 +241,12 @@ def main(argv):
     #else:
         #print("ERROR:",str(len(sys.argv)-1)," arguments given instead of 1 optional argument")
 
-    opts, args = getopt.getopt(argv,"hs:p:",["help","slicing","package"])
+    opts, args = getopt.getopt(argv,"hs:p:j:n:",["help","slicing","package","json","normal"])
 
     for opt, arg in opts:
+
+        packages = ''
+
         if opt == '-h':
             print("ggraph -p <PACKAGE_NAME>")
             sys.exit()
@@ -251,19 +254,26 @@ def main(argv):
         elif opt in ("-s","--slice"):
 
             args = arg.split(",")
-            # removing whitespace from the module names 
             args = [each.strip("") for each in args]
             result = ggraph(True)
-            print(result)
+            packages = result
             return result
 
         elif opt in ("-p", "--package"):
             
-            #os.system("ls")
-            #print(",".join(custom_list(arg)))
-            the_dict['packages'] = ",".join(custom_list(arg))
-            sys.stdout.write(json.dumps(the_dict))
-            # print(the_dict)
+
+            packages = ",".join(custom_list(arg))
+            return ",".join(custom_list(arg))
+
+        elif opt in ("-j", "--json"):
+            
+            the_dict['packages'] = packages
+            sys.stdout.write(json.dumps(the_dict)+"\n")
+            return json.dumps(the_dict)
+        
+        elif opt in ("-n", "--normal"):
+            
+            print(packages)
             return json.dumps(the_dict)
 
         else:
