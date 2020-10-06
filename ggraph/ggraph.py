@@ -256,24 +256,40 @@ def main(argv):
             args = [each.strip("") for each in args]
             result = ggraph(True)
             packages = result
+
+
+            if ("-n","") in opts:
+                print(packages)
+                return packages
+
+            elif ("-j","") in opts:
+                the_dict['packages'] = packages
+                sys.stdout.write(json.dumps(the_dict)+"\n")
+                return json.dumps(the_dict)
+
+            else:
+                print("select -n for normal mode\nselect -j for json mode")
+
             return result
 
         elif opt in ("-p", "--package"):
             
-
             packages = ",".join(custom_list(arg))
-            return ",".join(custom_list(arg))
 
-        elif opt in ("-j", "--json"):
-            
-            the_dict['packages'] = packages
-            sys.stdout.write(json.dumps(the_dict)+"\n")
-            return json.dumps(the_dict)
-        
-        elif opt in ("-n", "--normal"):
-            
-            print(packages)
-            return json.dumps(the_dict)
+
+            if ("-n","") in opts:
+                print(packages)
+                return packages
+
+            elif ("-j","") in opts:
+                the_dict['packages'] = packages
+                sys.stdout.write(json.dumps(the_dict)+"\n")
+                return json.dumps(the_dict)
+
+            else:
+                print("select -n for normal mode\nselect -j for json mode")
+
+            return ",".join(custom_list(arg))
 
         else:
 
